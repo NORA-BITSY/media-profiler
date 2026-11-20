@@ -1,0 +1,42 @@
+extraction:
+  frame_sample_rate: 1.0
+  insightface_det_size:
+  - 640
+  - 640
+  insightface_model: buffalo_l
+  keyframe_rate: 0.5
+  max_keyframes: 20
+  mediapipe_complexity: 1
+  vlm_model: moondream2
+  vlm_timeout: 30
+  adaptive_frame_rate: false
+  base_frame_rate: 0.5
+  high_confidence_frame_rate: 2.0
+  identity_confidence_threshold: 0.8
+harvest:
+  auto_scrape_on_new_identity: true
+  enabled: true
+  max_concurrent: 3
+  min_confidence: 0.9
+  socq_api_key: ''
+  socq_api_url: https://api.socq.io
+ingestion:
+  download_timeout: 300
+  max_concurrent: 3
+  ytdlp_format: bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best
+logging:
+  file: ./data/pipeline.log
+  format: json
+  level: INFO
+paths:
+  data_root: ./data
+  db_dir: ./data/chroma_db
+  sqlite_path: ./data/pipeline.db
+  videos_dir: ./data/videos
+search:
+  default_top_k: 10
+  face_similarity_threshold: 0.6
+  face_weight: 0.5
+  semantic_similarity_threshold: 0.5
+  semantic_weight: 0.2
+  spatial_weight: 0.3

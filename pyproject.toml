@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photo-indexer"
+version = "0.1.0"
+description = "Self-hosted, local-first photo indexing CLI with VLM enrichment, taxonomies, NER, body pose, and performer profiling"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.0",
+    "pydantic>=2.0",
+    "httpx>=0.24",
+    "numpy>=1.24",
+    "opencv-python>=4.8",
+    "mediapipe>=0.10",
+    "insightface>=0.7",
+    "onnxruntime>=1.16",
+]
+authors = [{ name = "pat" }]
+keywords = ["photo", "indexing", "vlm", "ollama", "cli", "ner", "taxonomy", "metadata", "body-pose", "face-recognition", "performers"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Multimedia :: Graphics",
+]
+
+[project.scripts]
+photo-indexer = "photo_indexer.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+monitoring = [
+    "prometheus-client>=0.19",
+]
+gpu = [
+    "onnxruntime-gpu>=1.16",
+]
+full = [
+    "onnxruntime-gpu>=1.16",
+    "prometheus-client>=0.19",
+]
+
+[tool.setuptools]
+packages = ["photo_indexer"]
